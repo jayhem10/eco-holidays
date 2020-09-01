@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <h1 class="my-5">{% trans %}Log in !{% endtrans %}</h1>
+{% if hasError %}
+	<div class="alert alert-danger">Error: email or password is wrong</div>
+{% endif %}
+
+    <form action="{{ path('security_login') }}" method="post">
+        <div class="form-group">
+            <input placeholder="Email" required value="{{ username }}" name="_username" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <input placeholder="Password" required name="_password" type="password" class="form-control">
+        </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">{% trans %}Log on{% endtrans %}</button>
+    </div>
+
+    </form>
+</div>
+
+{% endblock %}

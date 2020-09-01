@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cogazer - Registration{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class="container">
+    <h1 class="my-5"> {% trans %} Register and manage your library !{% endtrans %} </h1>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+    <button type="submit" class="btn btn-info mb-5">{% trans %}Sign up{% endtrans %}</button>
+
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}

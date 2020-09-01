@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    My ads
+{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-5">Add and manage your ads</h1>
+
+<div class="container text-center my-5">
+    <a href="{{ path('ads_create')}}" class="btn btn-outline-dark text-center" role="button" aria-pressed="true">{% trans %}Add an ad{% endtrans %}</a>
+</div>
+
+{% if myads  %}
+{# <h4 class="text-center">{% trans %}Here, you have{% endtrans %} {{blurays|length}} {% trans %}item(s) from your{% endtrans %} <u><a href="{{ path('collection')}}">collection</a></u></h4> #}
+<div class="container">
+  <section class="articles my-5">
+      <div class="row">
+          {% for myad in myads %}
+          <div class="col-lg-6">
+            <div class="room-wrap d-md-flex">
+                <a href="{{ path('ads_show' , {'id':myad.id}) }}" class="img order-md-last" style="background-image:  url('{{ asset(myad.coverImage)}}');"></a>
+                <div class="half right-arrow d-flex align-items-center">
+                    <div class="text p-4 p-xl-5 text-center">
+                        <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
+                        <p class="mb-0"><span class="price mr-1">{{myad.price}} €</span> <span class="per">per night</span></p>
+                        <h3 class="mb-3"><a href="{{ path('ads_show' , {'id':myad.id}) }}">{{myad.title}}</a></h3>
+                            <ul class="list-accomodation">
+                            <li><span>Max:</span> {{myad.max}}</li>
+                            <li><span>Size:</span> {{myad.size}} m2</li>
+                            <li><span>Bed:</span> {{myad.rooms}}</li>
+                        </ul>
+                        <p class="pt-1"><a href="#" class="btn-custom px-3 py-2">Manage your ad <span class="icon-long-arrow-right"></span></a></p>
+                        <p class="pt-1"><a href="{{ path('ads_image' , {'id':myad.id}) }}" class="btn-custom px-3 py-2">Add a picture <span class="icon-long-arrow-right"></span></a></p>
+                        <p class="pt-1"><a href="{{ path('ads_show' , {'id':myad.id}) }}" class="btn-custom px-3 py-2">Preview of your ad <span class="icon-long-arrow-right"></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+          {% endfor %}
+      </div>
+  </section>
+</div>
+
+{% endif %}
+
+{% endblock %}

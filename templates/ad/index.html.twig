@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eco'Holidays - Lodging{% endblock %}
+
+{% block body %}
+	{# <div class="wrap">
+		<div class="container">
+			<div class="row justify-content-between">
+					<div class="col d-flex align-items-center">
+						<p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a></p>
+					</div>
+					<div class="col d-flex justify-content-end">
+						<div class="social-media">
+						<p class="mb-0 d-flex">
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+						</p>
+				</div>
+					</div>
+			</div>
+		</div>
+	</div> #}
+
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Lodging</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    <section class="ftco-section bg-light ftco-no-pt ftco-no-pb">
+			<div class="container-fluid px-md-0">
+				<div class="row no-gutters">
+	
+				{% for ads in ad | slice(0,2) %}
+					<div class="col-lg-6">
+						<div class="room-wrap d-md-flex">
+							<a href="{{ path('ads_show' , {'id':ads.id}) }}" class="img" style="background-image: url({{ads.coverImage}});"></a>
+							<div class="half left-arrow d-flex align-items-center">
+								<div class="text p-4 p-xl-5 text-center">
+									<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
+									<p class="mb-0"><span class="price mr-1">{{ads.price}} €</span> <span class="per">per night</span></p>
+									<h3 class="mb-3"><a href="{{ path('ads_show' , {'id':ads.id}) }}">{{ads.title}}</a></h3>
+									<ul class="list-accomodation">
+										<li><span>Max: </span>{{ads.max}}</li>
+										<li><span>Size: </span> {{ads.size}}m2</li>
+										<li><span>Bed: </span>{{ads.rooms}}</li>
+									</ul>
+									<p class="pt-1"><a href="{{ path('ads_show' , {'id':ads.id}) }}" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					
+				
+				
+				{% for pairs in pair | slice(0,2) %}
+    			<div class="col-lg-6">
+    				<div class="room-wrap d-md-flex">
+    					<a href="{{ path('ads_show' , {'id':pairs.id}) }}" class="img order-md-last" style="background-image: url({{pairs.coverImage}});"></a>
+    					<div class="half right-arrow d-flex align-items-center">
+    						<div class="text p-4 p-xl-5 text-center">
+    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
+    							<p class="mb-0"><span class="price mr-1">{{pairs.price}} €</span> <span class="per">per night</span></p>
+	    						<h3 class="mb-3"><a href="{{ path('ads_show' , {'id':pairs.id}) }}">{{pairs.title}}</a></h3>
+									<ul class="list-accomodation">
+	    							<li><span>Max:</span> {{pairs.max}}</li>
+	    							<li><span>Size:</span> {{pairs.size}} m2</li>
+	    							<li><span>Bed:</span> {{pairs.rooms}}</li>
+	    						</ul>
+	    						<p class="pt-1"><a href="{{ path('ads_show' , {'id':pairs.id}) }}" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+    						</div>
+    					</div>
+					</div>
+				</div>
+					{% endfor %}
+					
+								
+
+				</div>
+</div>
+</section>
+		
+
+  {% endblock %}

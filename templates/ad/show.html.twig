@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ad.title}}
+{% endblock %}
+
+{% block body %}
+
+
+
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('{{ asset(ad.coverImage)}}');" data-stellar-background-ratio="0.5">
+      <div class=""></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+        <div class="col-md-12 ftco-animate">
+          <h1 class="text-center">{{ ad.title}} <br> <i class="fas fa-arrow-circle-down"></i></h1>
+          
+        </div>
+        </div>
+      </div>
+      </div>
+
+
+     
+      <div class="container my-5">
+        <div class="col-md-12 ftco-animate">
+          <h1 class="text-center">{{ ad.title}}</h1>
+          <h4 class="justify my-4">{{ ad.content }}</h4>
+        </div>
+        </div>
+      </div>
+      </div>
+      
+
+
+    <div class="container text-center">
+      <div class="">
+      <ul class="list-inline">
+        <li class="my-4 col-12"><i class="fas fa-info fa-3x"></i> <h4> {{ ad.introduction}} </h4></li>
+        <li class="my-4 col-12"><i class="fas fa-map-marked fa-3x"></i><h4>{{ ad.slug }}</h4></li>
+        <li class="my-4 col-12"><i class="fas fa-bed fa-3x"></i><h4>{{ ad.rooms }} bed(s)</h4></li>
+        <li class="my-4 col-12"><i class="fas fa-user-friends fa-3x"><h4>{{ ad.max }} person(s)</h4></i></li>
+        <li class="my-4 col-12"><i class="fas fa-square-full fa-3x"></i> <h4>{{ ad.size }} m2 </h4></li>    
+      </ul>
+    </div>
+    </div>
+
+<div class="d-none d-xl-block">
+  <div class="bloc">
+    <h1 class="text-center">More pictures</h1>
+    </div>
+
+    <div class="container-fluid part ">
+      <div class="row">
+              <div class="col-12 my-5">
+                
+                  <ul class="fancy row">
+                    {% for image in ad.images %}
+                    <li class="col-l-4 my-3"><a data-fancybox="gallery" href="{{asset(image.url)}}"><img src="{{asset(image.url)}}" class="img-responsive" width="480" height="320" alt="#"></a></li>
+                    {% endfor %}
+                  </ul>
+                  
+              </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="d-block d-xl-none">
+
+    <h2 class="text-center">More pictures</h2>
+   
+  
+    <div class="grid">
+      <div class="grid-sizer">
+        {% for image in ad.images %}
+        <div class="grid-item"><img src="{{asset(image.url)}}" alt="#"></div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+   
+ 
+
+{% endblock %}

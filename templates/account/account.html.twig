@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cogazer - Account{% endblock %}
+
+{% block body %}
+
+
+<h1 class="container text-center mt-3">Welcome , <strong>{{app.user.firstname}} {{app.user.lastname}}</strong></h1>
+<h2 class="container text-center my-5">You are in the right place to manage your account</h2>
+<div class="container text-center "><img class="profilepicture" src="{{ app.user.picture}}" alt=""></div>
+
+
+        
+<div class="container text-center my-5">
+    <a href="{{ path('security_profile')}}" class="btn btn-outline-dark text-center" role="button" aria-pressed="true">{% trans %}Change my profile{% endtrans %}</a>
+</div>
+
+<div class="container text-center my-5">
+    <a href="{{ path('security_password')}}" class="btn btn-outline-dark text-center" role="button" aria-pressed="true">{% trans %}Change my password{% endtrans %}</a>
+</div>
+
+<div class="container text-center my-5">
+    <a href="{{ path('security_picture')}}" class="btn btn-outline-dark text-center" role="button" aria-pressed="true">{% trans %}Change profile picture{% endtrans %}</a>
+</div>
+
+
+{% endblock %}
